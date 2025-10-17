@@ -1,7 +1,9 @@
-import { audioFiles } from "@/data/audioFiles";
+import { loadAudioFiles } from "@/lib/loadAudioFiles";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const audioFiles = await loadAudioFiles();
+
   return (
     <div className="grow overflow-hidden border-r border-gray-200"><div className="flex h-[70px] items-center justify-between border-b border-gray-200 p-4">
       <div className="flex items-center">
