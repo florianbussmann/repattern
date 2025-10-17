@@ -2,7 +2,7 @@ export interface AudioFile {
     id: string;
     title: string;
     duration: string;
-    category: string;
+    categories: string[];
     src: string;
 }
 

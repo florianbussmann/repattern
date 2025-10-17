@@ -1,4 +1,5 @@
 import { loadAudioFiles } from "@/lib/loadAudioFiles";
+import { categories } from "@/data/categories";
 import Link from "next/link";
 
 export default async function Home() {
@@ -12,7 +13,7 @@ export default async function Home() {
           <span className="ml-2 text-sm text-gray-400">{audioFiles.length}</span>
         </h1>
       </div>
-      </div>
+    </div>
       <div className="h-[calc(100vh-64px)] overflow-auto">
         {audioFiles.map((audio) => {
           return (
@@ -32,7 +33,10 @@ export default async function Home() {
                   </div>
                   <div className="flex grow items-center overflow-hidden">
                     <span className="mr-2 max-w-[400px] min-w-[175px] truncate font-medium">
-                      {audio.category}
+                      {audio.categories.map((category) => {
+                        return categories.find(c => c.id == category)!.title
+                      }).filter(Boolean)
+                        .join(", ")}
                     </span>
                   </div>
                 </div>
