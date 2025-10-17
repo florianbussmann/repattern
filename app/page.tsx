@@ -1,71 +1,49 @@
-'use client'
-
-import { useState, useEffect } from "react";
-import { AudioCard } from "@/components/AudioCard";
-import { AudioPlayer } from "@/components/AudioPlayer";
 import { audioFiles } from "@/data/audioFiles";
+import Link from "next/link";
 
 export default function Home() {
-  const [selectedAudio, setSelectedAudio] = useState<string | null>(null);
-
-  const handleAudioSelect = (audioId: string) => {
-    setSelectedAudio(audioId);
-  };
-
-  const selectedAudioFile = audioFiles.find(a => a.id === selectedAudio);
-
   return (
-    <div className="font-sans grid items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col items-center sm:items-start">
-        <div>
-          <h2 className="text-xl font-semibold mb-4">Training Library</h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {audioFiles.map((audio) => (
-              <AudioCard
-                key={audio.id}
-                id={audio.id}
-                title={audio.title}
-                duration={audio.duration}
-                category={audio.category}
-                isActive={selectedAudio === audio.id}
-                onClick={() => handleAudioSelect(audio.id)}
-              />
-            ))}
-          </div>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Go to nextjs.org →
-        </a>
-      </footer>
-      {selectedAudioFile && (
-          <AudioPlayer
-            src={selectedAudioFile.src}
-            title={selectedAudioFile.title}
-          />
-      )}
+    <div className="grow overflow-hidden border-r border-gray-200"><div className="flex h-[70px] items-center justify-between border-b border-gray-200 p-4">
+      <div className="flex items-center">
+        <h1 className="flex items-center text-xl font-semibold capitalize">
+          Training Library
+          <span className="ml-2 text-sm text-gray-400">{audioFiles.length}</span>
+        </h1>
+      </div>
+      </div>
+      <div className="h-[calc(100vh-64px)] overflow-auto">
+        {audioFiles.map((audio) => {
+          return (
+            <Link
+              key={audio.id}
+              href={`/t/${audio.id}`}
+              className="block cursor-pointer border-b border-gray-100 hover:bg-gray-50"
+            >
+              <div
+                className="flex items-center"
+              >
+                <div className="flex grow items-center overflow-hidden p-4">
+                  <div className="mr-4 w-[250px] shrink-0">
+                    <span className="truncate font-medium">
+                      {audio.title}
+                    </span>
+                  </div>
+                  <div className="flex grow items-center overflow-hidden">
+                    <span className="mr-2 max-w-[400px] min-w-[175px] truncate font-medium">
+                      {audio.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex w-40 shrink-0 items-center justify-end p-4">
+                  <span className="text-sm text-gray-500">
+                    {audio.duration}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }
