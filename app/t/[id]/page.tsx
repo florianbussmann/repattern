@@ -4,8 +4,7 @@ import { loadAudioFiles } from "@/lib/loadAudioFiles";
 import { AudioPlayer } from '@/components/AudioPlayer';
 
 export async function generateStaticParams() {
-    const ids = ['1'];
-    return ids.map(id => ({ id }));
+    return (await loadAudioFiles()).map(audio => ({ id: audio.id }));
 }
 
 export default async function TrackPage({
