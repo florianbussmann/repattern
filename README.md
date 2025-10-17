@@ -26,6 +26,21 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+Content can be provided by pointing `NEXT_PUBLIC_REMOTE_CONTENT_URL` to a JSON file consisting of [AudioFiles](https://github.com/florianbussmann/repattern/blob/main/lib/audioStorage.ts#L1):
+
+```json
+[
+    {
+        "id": "1",
+        "title": "Deep Relaxation Hypnosis",
+        "duration": "25:00",
+        "category": "Hypnosis",
+        "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    ...
+]
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -1,7 +1,12 @@
 import { LeftSidebar } from '@/components/left-sidebar';
 import { notFound } from 'next/navigation';
-import { audioFiles } from "@/data/audioFiles";
+import { loadAudioFiles } from "@/lib/loadAudioFiles";
 import { AudioPlayer } from '@/components/AudioPlayer';
+
+export async function generateStaticParams() {
+    const ids = ['1'];
+    return ids.map(id => ({ id }));
+}
 
 export default async function TrackPage({
     params,
@@ -10,7 +15,7 @@ export default async function TrackPage({
 }) {
     const id = (await params).id;
 
-    const selectedAudioFile = audioFiles.find(a => a.id === id);
+    const selectedAudioFile = (await loadAudioFiles()).find(a => a.id === id);
 
     if (!selectedAudioFile) {
         notFound();
