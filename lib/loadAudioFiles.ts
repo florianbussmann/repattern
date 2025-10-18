@@ -3,10 +3,13 @@ import { AudioFile } from "@/lib/audioStorage";
 
 const REMOTE_CONTENT_URL = process.env.NEXT_PUBLIC_REMOTE_CONTENT_URL;
 
+if (!REMOTE_CONTENT_URL) {
+    console.warn("REMOTE_CONTENT_URL not set — using local fallback.");
+}
+
 export async function loadAudioFiles(): Promise<AudioFile[]> {
     try {
         if (!REMOTE_CONTENT_URL) {
-            console.warn("REMOTE_CONTENT_URL not set — using local fallback.");
             return localAudioFiles;
         }
 
