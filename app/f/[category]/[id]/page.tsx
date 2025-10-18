@@ -10,7 +10,7 @@ export async function generateStaticParams() {
 export default async function TrackPage({
     params,
 }: {
-    params: Promise<{ name: string; id: string }>;
+    params: Promise<{ category: string; id: string }>;
 }) {
     const id = (await params).id;
 

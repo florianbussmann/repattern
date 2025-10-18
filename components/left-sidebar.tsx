@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { Suspense } from 'react';
 
 function BackButton() {
-    let { category } = useParams();
+    const { category } = useParams();
 
     return (
         <Link href={`/f/${category}`} passHref>
