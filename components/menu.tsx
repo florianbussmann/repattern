@@ -24,7 +24,7 @@ export async function NavMenu() {
                 className="p-6 w-[300px] transition-transform duration-200 ease-out data-[state=open]:duration-200 data-[state=open]:ease-out sm:w-[400px]"
             >
                 <SheetTitle>Menu</SheetTitle>
-                <nav className="mt-4 flex flex-col space-y-4">
+                <nav className="mt-4 flex flex-col space-y-4 overflow-y-auto">
                     {categories.map((category) => {
                         return (
                             <Link
