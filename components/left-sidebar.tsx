@@ -3,11 +3,14 @@
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { Suspense } from 'react';
 
 function BackButton() {
+    let { category } = useParams();
+
     return (
-        <Link href={`/`} passHref>
+        <Link href={`/f/${category}`} passHref>
             <Button
                 size="lg"
                 variant="outline"

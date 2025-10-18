@@ -33,8 +33,10 @@ Content can be provided by pointing `NEXT_PUBLIC_REMOTE_CONTENT_URL` to a JSON f
     {
         "id": "1",
         "title": "Deep Relaxation Hypnosis",
-        "duration": "25:00",
-        "category": "Hypnosis",
+        "duration": "6:12",
+        "categories": [
+            "fit",
+        ],
         "src": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
     },
     ...

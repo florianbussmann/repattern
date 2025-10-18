@@ -5,7 +5,7 @@ export const audioFiles: AudioFile[] = [
     {
         id: "1",
         title: "Deep Relaxation Hypnosis",
-        duration: "25:00",
+        duration: "6:12",
         categories: [
             "fit"
         ],
@@ -14,7 +14,7 @@ export const audioFiles: AudioFile[] = [
     {
         id: "2",
         title: "Confidence Building NLP",
-        duration: "30:15",
+        duration: "7:05",
         categories: [
             "career", "emotional", "social"
         ],
@@ -23,7 +23,7 @@ export const audioFiles: AudioFile[] = [
     {
         id: "3",
         title: "Sleep Improvement Session",
-        duration: "40:00",
+        duration: "5:44",
         categories: [
             "fit"
         ],
@@ -32,7 +32,7 @@ export const audioFiles: AudioFile[] = [
     {
         id: "4",
         title: "Goal Achievement Programming",
-        duration: "35:30",
+        duration: "5:02",
         categories: [
             "career", "vision"
         ],
@@ -41,7 +41,7 @@ export const audioFiles: AudioFile[] = [
     {
         id: "5",
         title: "Stress Release & Calm",
-        duration: "28:45",
+        duration: "5:53",
         categories: [
             "emotional"
         ],
@@ -50,7 +50,7 @@ export const audioFiles: AudioFile[] = [
     {
         id: "6",
         title: "Motivation & Energy Boost",
-        duration: "22:00",
+        duration: "4:39",
         categories: [
             "fit"
         ],
