@@ -1,7 +1,7 @@
 import { loadAudioFiles } from "@/lib/loadAudioFiles";
 import { categories } from "@/data/categories";
+import { NavMenu } from '@/components/menu';
 import Link from "next/link";
-
 
 export function generateStaticParams() {
   return categories;
@@ -14,19 +14,20 @@ export default async function CategoryPage({
 }) {
   const audioFiles = await loadAudioFiles();
 
-  let { category } = await params;
-  let filteredAudioFiles = category == "all" ? audioFiles : audioFiles.filter(audio => audio.categories.includes(category));
+  const { category } = await params;
+  const filteredAudioFiles = category == "all" ? audioFiles : audioFiles.filter(audio => audio.categories.includes(category));
 
   return (
-    <div className="flex h-screen">
-      <div className="grow overflow-hidden border-r border-gray-200"><div className="flex h-[70px] items-center justify-between border-b border-gray-200 p-4">
-        <div className="flex items-center">
-          <h1 className="flex items-center text-xl font-semibold capitalize">
-            {category == "all" ? "Training Library" : categories.find((cat => cat.id == category))?.title}
-            <span className="ml-2 text-sm text-gray-400">{filteredAudioFiles.length}</span>
-          </h1>
+      <div className="grow overflow-hidden border-r border-gray-200">
+        <div className="flex h-[70px] items-center justify-between border-b border-gray-200 p-4">
+          <div className="flex items-center">
+            <NavMenu />
+            <h1 className="flex items-center text-xl font-semibold capitalize">
+              {category == "all" ? "Training Library" : categories.find((cat => cat.id == category))?.title}
+              <span className="ml-2 text-sm text-gray-400">{filteredAudioFiles.length}</span>
+            </h1>
+          </div>
         </div>
-      </div>
         <div className="h-[calc(100vh-64px)] overflow-auto">
           {filteredAudioFiles.map((audio) => {
             return (
@@ -64,6 +65,5 @@ export default async function CategoryPage({
           })}
         </div>
       </div>
-    </div>
   );
 }

@@ -5,6 +5,10 @@ export interface Category {
 
 export const categories: Category[] = [
     {
+        id: "all",
+        title: "Training Library",
+    },
+    {
         id: "fit",
         title: "Health & Fitness",
     },
