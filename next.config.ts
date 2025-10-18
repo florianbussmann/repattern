@@ -14,6 +14,15 @@ if (isGithubActions) {
 const nextConfig: NextConfig = {
   basePath,
   assetPrefix,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/f/all',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
